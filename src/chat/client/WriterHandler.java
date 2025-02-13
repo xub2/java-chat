@@ -1,4 +1,4 @@
-package chat;
+package chat.client;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -26,6 +26,7 @@ public class WriterHandler implements Runnable{
         Scanner sc = new Scanner(System.in);
 
         try {
+            // 연결은 이미 됐는데, 사용자 이름을 입력 받고 접속한다는 로직
             String userName = inputUserName(sc);
             output.writeUTF("/join" + DELIMITER + userName);
 
@@ -33,8 +34,9 @@ public class WriterHandler implements Runnable{
                 String toSend = sc.nextLine();
                 if (toSend.isEmpty()) {
                     continue;
-                }
+                } // 아무것도 입력하지 않고 엔터를 누르면 다시 입력 받도록 설계
 
+                // /exit 라는 문자를 서버로 보내고 반복문 종료 -> finally 문으로 이동
                 if (toSend.equals("/exit")) {
                     output.writeUTF(toSend);
                     break;
@@ -55,6 +57,7 @@ public class WriterHandler implements Runnable{
             client.close();
         }
 
+
     }
 
     private static String inputUserName(Scanner sc) {
@@ -72,7 +75,7 @@ public class WriterHandler implements Runnable{
         }
 
         try {
-            System.in.close(); // Scanner 입력 중지
+            System.in.close(); // Scanner 입력 중지 (사용자 입력 닫기)
         } catch (IOException e) {
             log(e);
         }

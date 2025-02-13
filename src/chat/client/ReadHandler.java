@@ -1,4 +1,4 @@
-package chat;
+package chat.client;
 
 import java.io.DataInputStream;
 import java.io.IOException;
