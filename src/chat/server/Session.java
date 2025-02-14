@@ -19,6 +19,7 @@ public class Session implements Runnable {
     private boolean closed = false;
 
     private String userName;
+
     public Session(Socket socket, CommandManager commandManager, SessionManager sessionManager) throws IOException {
         this.socket = socket;
         this.input = new DataInputStream(socket.getInputStream());
