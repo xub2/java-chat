@@ -11,7 +11,7 @@ public class CommandManagerV4 implements CommandManager {
     private static final String DELIMITER = "\\|";
     private final SessionManager sessionManager;
     private final Map<String, Command> commands = new HashMap<>();
-    private final DefaultCommand defaultCommand = new DefaultCommand();
+    private final DefaultCommand defaultCommand = new DefaultCommand(); //Null Object
 
     public CommandManagerV4(SessionManager sessionManager) {
         //커맨드 패턴 적용
